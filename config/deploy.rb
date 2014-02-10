@@ -4,8 +4,8 @@ lock '3.1.0'
 set :application, 'shamatov'
 set :repo_url, 'git@github.com:IvanShamatov/shamatov.git'
 
-# Default branch is :master
-# ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }
+# set :shared_children, shared_children + %w{tmp/uploads}
+
 
 # Default deploy_to directory is /var/www/my_app
 set :deploy_to, '/home/deployer/shamatov'
@@ -26,7 +26,7 @@ set :deploy_to, '/home/deployer/shamatov'
 # set :linked_files, %w{config/database.yml}
 
 # Default value for linked_dirs is []
-# set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system}
+set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets public/system}
 
 # Default value for default_env is {}
 # set :default_env, { path: "/opt/ruby/bin:$PATH" }
