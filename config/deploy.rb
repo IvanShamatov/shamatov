@@ -35,13 +35,6 @@ set :rvm_ruby_version, '2.0.0-p247'
 # Default value for keep_releases is 5
 # set :keep_releases, 5
 
-namespace :rvm do
-  desc "Runs the RVM hook - use it before any custom tasks if necessary"
-  task :hook do
-    set :rvm_type, :auto
-  end
-end
-
 
 namespace :deploy do
 
