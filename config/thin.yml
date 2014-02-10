@@ -3,8 +3,8 @@ chdir: /home/deployer/shamatov/current
 environment: production
 timeout: 30
 log: /home/deployer/shamatov/current/log/thin.log
-pid: /home/deployer/shamatov/current/pids/thin.pid
-socket: /home/deployer/shamatov/current/tmp/thin.sock
+pid: /home/deployer/shamatov/current/tmp/pids/thin.pid
+socket: /home/deployer/shamatov/current/tmp/sockets/thin.sock
 max_conns: 1024
 max_persistent_conns: 100
 require: []
