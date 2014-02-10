@@ -30,19 +30,22 @@ set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets public/system}
 
 # Default value for default_env is {}
 # set :default_env, { path: "/opt/ruby/bin:$PATH" }
+set :rvm_ruby_version, '2.0.0-p247'
 
 # Default value for keep_releases is 5
 # set :keep_releases, 5
 
 namespace :deploy do
 
-  desc 'Restart application'
+desc 'Restart application'
   task :restart do
     on roles(:app), in: :sequence, wait: 5 do
-      # Your restart mechanism here, for example:
-      # execute :touch, release_path.join('tmp/restart.txt')
+      within release_path do
+        execute :bundle, "exec thin restart -C config/thin.yml"
+      end
     end
   end
+  before :restart, 'rvm:hook'
 
   after :publishing, :restart
 
