@@ -48,6 +48,15 @@ namespace :deploy do
   end
   before :restart, 'rvm:hook'
 
+  task :start do
+    on roles(:app), in: :sequence, wait: 5 do
+      within release_path do
+        execute :bundle, "exec thin start -C config/thin.yml"
+      end
+    end
+  end
+  before :start, 'rvm:hook'
+
   after :publishing, :restart
 
   after :restart, :clear_cache do
